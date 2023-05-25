@@ -1,0 +1,107 @@
+@font-face{font-family: 'RIDIBatang'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');font-weight: normal;font-style: normal;}
+
+
+* header 메뉴
+
+- Brand
+about
+customizing
+class
+
+- Wallet
+large
+medium
+small
+ 
+-Bags
+backpack
+cross
+tote
+boston
+
+- Acc
+keyholder
+strap
+tassel
+bookmarker
+
+- Community
+notice
+1:1 qna
+gallery
+map
+
+search
+
+#con1
+
+[1]
+'이든' :: [착한, 어진]
+
+이라는 뜻을 가진 순 우리말로 착하고 어진 마음으로,<br>
+내가 사용할 물건을 만들듯 한땀 한땀 정성들여<br>
+제대로 된 물건을 만들고자 하는 마음을 담았습니다.<br>
+이든 공방의 제품은 가죽 본연의 느낌을 그대로 담아<br>
+시간이 지남에 따라, 사용감에 따라 멋이 더해집니다.
+
+
+[2]
+Edun's Leather
+
+이든만의 레더
+
+이든만의 기술로 느낄 수 있는<br>
+격이 다른 레더의 재질을 느껴보세요.<br>
+당신에게 어울리는 레더를 직접 만져보세요.
+
+샘플 체크
+
+
+#con2
+
+01
+캐주얼 브리프케이스
+남녀 공용으로 사용하기 좋은 멋스러운 데일리백
+700,000원
+
+02
+사각필통
+멋진 필통으로 공부를 더 잘하고 싶어질지도
+52,000원
+
+03
+카드포켓 핸드폰 케이스
+뒷면 카드주머니로 실용적이고 아름다운 디자인
+55,000원
+
+04
+파티션 동전지갑
+파티션이 있어 수납이 편리한 동전지갑
+59,000원
+
+05
+통가죽 다이어리
+스케줄 관리도 품격있게, 통가죽 다이어리로
+77,000원
+
+06
+하트 북마크
+북마크에 심쿵, 하트 북마크
+7,000원
+
+더보기 +
+
+
+#con3
+
+CUSTOM
+내 마음대로! 원하는대로! 이든 공방 주문제작으로 세상에 단 하나뿐인 나만의 제품을 만드세요.
+Detail View +
+
+
+*footer
+
+상호명 : 이든공방대표자 : 하호주개인정보보호책임관리자 : 하호주<br>
+주소 : 대구광역시 수성구 지산로3길 112-4, 1층 상가호(지산동, 천가지 꿈)<br>
+전화번호 : 010-6540-5211E-mail : edunleather@naver.com<br>
+통신판매업신고번호 : 제 2018-대구수성구-0665 호사업자등록번호 : 611-39-00284

@@ -1,0 +1,574 @@
+@charset "UTF-8";
+@font-face{font-family: 'AppleSDGothicNeo'; src: url'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
+  font-weight: 400;}
+*{
+  padding: 0;
+  margin: 0;
+  word-break: keep-all;
+}
+html,body{
+  font-size: 12px;
+  font-family: 'AppleSDGothicNeo';
+  background-color: #f2f2f2;
+}
+ul{
+  position: absolute;
+  list-style: none;
+}
+a{
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+img{
+  vertical-align: bottom;
+}
+button{
+  border: none;
+  background: transparent;
+}
+address{
+  font-style: normal;
+}
+
+#wrap{
+  width: 100%;
+}
+.align{
+  max-width: 1300px;
+  /* 반응형웹으로 제작할 것이므로 변동의 여지가 있는 최대값으로 가로를 준다. */
+  margin: auto;  
+}
+header{
+  width: 100%;
+  position: absolute;
+  /* main영역위에 header 올리기위해 */
+  background: black;
+  /* 포지션을 건 태그에 크기값이 없는 경우에는 내용만큼 줄어들기 때문에
+  원하는 값이 있다면 반드시 줘야 함 */
+  z-index:10;
+  /* main영역도 bxslider가 걸린 상태이므로 position이 있다고 봐야한다.
+  position이 걸린 태그끼리는 아래쪽에 적힌 최신글일수록
+  위로 올라오는 성질이있어서 이 순서를 임의로 변경 */
+  color: #fff;
+}
+header .align{
+  height: 68px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .logo{
+  width: 150px;
+  /* margin-top: 0.6rem; */
+}
+header .logo h1{}
+header .logo h1 a{}
+header .logo h1 a img{
+  width: 100px;
+
+}
+header nav{
+  width: 70%;
+  display: flex;
+  /* text-align: center; */
+  justify-content: space-between;
+}
+header nav div{}
+header nav div>a{
+  padding: 0 1.5rem;
+  font-size: 1.6rem;
+  /* line-height: 75px; */
+  opacity: 0.8;
+}
+header nav div:hover > a{  
+  /* font-weight: bold; */
+  /* background: #000000b6; */
+  /* div영역(메인+서브메뉴 전체)에 마우스가 올라가 있는 동안
+  메인메뉴택스트의 배경을 변화시킨다.
+  =>서브메뉴에 마우스를 올린 동안에도 메인메뉴가 
+  하이라이트 되는 효과를 줌 */
+  opacity: 1;
+}
+
+header nav > div{
+  position: relative;
+}
+header nav > div > ul{
+  width: 100%;
+  display: flex;
+  /* 서브메뉴를 한 지점에서 같이 나오도록 하기위해 전체적으로 위치해야 함. */
+  position: absolute;
+  left: -50px;
+  /* 현재 부모는 header임. 부모 다르게 주려면 주고자하는곳에 position 걸어줌. */
+  top: 45px;
+  /* header영역이 끝나는 지점부터 나오게 하기 위해 
+  header의 height값만큼 줌 */
+  /* 화면의 왼쪽 시작지점에서부터 나오게 하기위해  */
+  box-sizing: border-box;
+  /* 태그에 지정해놓은 가로 크기 100%에 각 padding-left가 추가로 생기지 않도록 하기 위함.(width>padding-left) */
+  opacity: 0;
+  /* color: #000; */
+}
+header nav > div > ul a{
+  display: flex;
+  padding: 0 10px;
+}
+header nav div ul li{
+  padding: 0 10px;
+}
+header nav div ul li a{
+  font-size: 1.3rem;
+  padding: 1rem;
+}
+header .search{
+  /* margin-top: 1.7rem; */
+  width: 13%;
+  position: relative;
+}
+header .search input{
+  width: 90%;
+  height: 30px;
+  padding-left: 10px;
+  border: none;
+  background: #333;
+  color: #fff;
+}
+.search input::placeholder{
+  color: #ddd;
+}
+.search button{
+  position: absolute;
+  right: 20px;
+  top: 4px;
+}
+.search button img{
+  width: 20px;
+}
+
+/*태블릿용 메뉴*/
+.headerTabletMenu{
+  display: none;
+  /* css본문에서 모두 세팅을 하고 
+  pc버전에서는 보이지 않도록 처리
+  미디어 쿼리에서 display: block으로 바꿔줌 */
+}
+.headerTabletMenu span.tmclick{
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  top: 2rem;
+  right: 4rem;
+  opacity:.7;
+}
+.headerTabletMenu span.tmclick:hover{
+  opacity: 1;
+}
+.headerTabletMenu .tmport{
+  position: fixed;
+  /* 메뉴 전체 화면이 스크롤 움직임이나 화면 크기 변동에 
+  상관없이 항상 전체 크기를 차지할 수 있도록 하기 위함 */
+  background: #000000d2;
+  color: #fff;
+  top: 0;
+  left: 0;
+  height: 60%;
+  right: 0;
+  display: none;
+}
+
+.headerTabletMenu .tmport button{
+  /* 실질적인 속성은 inline-block에 해당하는 태그이므로, 부모의 값을
+   상속받는 것이 극히 드물다 */
+  color: #fff;
+  border: 1px solid #fff;
+  font-size: 1.3rem;
+  border-radius: 50%;
+  position: absolute;
+  right: 3.8rem;
+  top: 1.8rem;
+  width: 25px;
+  height: 25px;  
+}
+.headerTabletMenu .tmport button:hover{
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+}
+.headerTabletMenu .tmport ul{
+  margin-top: 6rem;
+  /* margin-left: 10rem; */
+  text-align: center;
+  opacity: .8;
+}
+.headerTabletMenu .tmport ul li{}
+.headerTabletMenu .tmport ul li a:hover{
+  font-style: italic;
+  font-weight: bold;
+  opacity: 1;
+}
+.headerTabletMenu .tmport ul li a{
+  padding: 0 20px;
+  display: inline-block;
+  font-size: 1.8rem;
+  line-height: 70px;
+}
+
+
+main img{
+  border: 1px solid;
+}
+
+
+section{}
+#content1{
+  display: flex;
+  padding: 0 1rem;
+  margin: 1.5rem auto;
+  background: white;
+  border-radius: 2%;
+  
+}
+#content1 .cont1text{
+  /* text-align: center; */
+  width: 40%;
+  padding: 1.5rem 0;
+  line-height: 1.8;
+}
+#content1 .cont1text h3{
+  margin-left: 20%;
+  font-size: 2.3rem;
+  padding: 1.5rem 0;
+  width: 80%;
+  margin-top: 5%;
+}
+#content1 .cont1text p{
+  margin-left: 20%;
+  /* font-size: 2.3rem;
+  padding: 1.5rem 0;
+  width: 80%; */
+}
+#content1 .cont1text span{
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: #000;
+  margin: 2rem auto 3rem;
+}
+#content1 .cont1text p{
+  font-size: 1.3rem;
+}
+#content1 .cont1img{
+  position: relative;
+  margin-left: 5%;
+  width: 60%;
+  overflow: hidden;
+  /* hover하면서 커진 배경이미지가 잘려서 보이도록 */
+}
+#content1 .cont1img .contBg{
+  background: url("../image/main2pp.png") ;
+  background-size: cover;
+  width: 100%;
+  height: 360px;
+  transition: .5s;
+}
+#content1 .cont1img .contText{
+  position: absolute;
+  /* 형제 관계 bg위에 얹기 위함. */
+  background: #000000b3;
+  top: 280px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  color: #fff;
+  transition: .5s;
+}
+#content1 .cont1img .contText img{
+  transition: .5s;
+  /* transition은 상속이 안되어서 동일하게 주어야함 */
+  margin: 1rem 0;
+  width: 30px;  
+}
+#content1 .cont1img .contText h4{
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+#content1 .cont1img .contText h3{
+  font-size: 2rem;
+  font-weight: normal;
+}
+#content1 .cont1img .contText span{
+  display: block;
+  width: 1px;
+  height: 70px;
+  background: #fff;
+  margin: 1rem auto;
+  transform: rotate(30deg);
+}
+#content1 .cont1img .contText p{
+  font-size: 1.1rem;
+  color: #ccc;
+}
+#content1 .cont1img .contText button{
+  /* 상속받지 않는것;글자,색등 상속 안받는것이 많음 */
+  display: block;
+  font-family: 'RIDIBatang';
+  color: #fff;
+  border: 1px solid;
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
+  margin: auto ;
+  margin-top: 3rem;
+}
+#content1 .cont1img .contText button:hover{
+  background: #fff;
+  color: #000;
+}
+#content1 .cont1img:hover .contBg{
+  transform: scale(1.2);
+}
+#content1 .cont1img:hover .contText{
+  top: -30px;
+}
+#content1 .cont1img:hover .contText img{
+  opacity: 0;
+}
+#content2{
+  margin-top: 3rem;
+  text-align: center;
+  background-color: #f2f2f2;
+}
+#content2 h2{
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  background-color: #f2f2f2;
+  border-radius: 10%;
+}
+#content2 span{
+  display: inline-block;
+  /* 부모태그에 tac가 있으면 박스라 하더라도 중앙정렬이 유지됨 */
+  width: 1px;
+  height: 70px;
+  background: #aaa;
+  margin: 2rem 0;
+}
+#content2 ul{
+  display: flex;
+  background-color: #f2f2f2;
+}
+#content2 ul li{
+  width: 25%;
+}
+#content2 ul li img{
+  width: 50%;
+  transition: .3s;
+}
+#content2 ul li p{
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  opacity: .8;
+}
+#content2 ul li:hover p{
+  opacity: 1;
+}
+#content2 ul li:hover img{
+  transform: scale(1.1);
+}
+#content3{
+  padding: 15rem 0;
+}
+#content3 h2{}
+#content3 .bxcover{}
+#content3 .bxcover ul{}
+#content3 .bxcover ul li{
+  position: relative;
+  width: 300px;
+  height: 100%;
+  height: auto;
+  text-align: center;
+  overflow: hidden;
+}
+#content3 .bxcover ul li a{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  /* a 영역을 li에 모두 걸어줄때 사용 */
+}
+#content3 .bxcover ul li .bximgbox{
+  overflow: hidden;
+}
+#content3 .bxcover ul li .bximgbox img{
+  width: 100%;
+}
+#content3 .bxcover ul li:hover .bximgbox  img{
+  transform: scale(1.2);
+}
+#content3 .bxcover ul li .bxtextbox .bxt1{
+  font-size: 1.3rem;
+}
+#content3 .bxcover ul li .bxtextbox .bxt2{
+  margin: .3rem 0;
+}
+#content3 .bxcover ul li .bxtextbox .bxt3{
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+#content3 .bxcover ul li .bxtextbox .bxt3::after{
+  display: block;
+  content: '';
+  height: 10px;
+  background: yellow;
+  /* margin:-15px auto 0; */
+  margin: auto;
+  opacity: 0;
+  transition: .3s;
+  width: 0;
+}
+#content3 .bxcover ul li:hover .bxtextbox .bxt3::after{
+ opacity: 1;
+ width: 100px;
+}
+#content3 .morebtn{
+  text-align: center;
+}
+#content3 .morebtn a{
+  display: inline-block;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  padding: 1.5rem 2.5rem;
+  border: 1px solid ;
+}
+#content3 .morebtn a:hover{
+  background-color: #555;
+  color: #fff;
+}
+#content4{
+  background: url("../image/my\ dyson.png") center;
+  height: 350px;
+  box-sizing: border-box;
+  color: #fff;
+  text-align: center;
+  /* box라 하더라도 가로값이 없으면 중앙정렬됨.단, box설정하면 풀림 */
+  padding-top: 4.5rem;
+  /* background-attachment: fixed; */
+  /* 배경이미지크기가 화면 전체를 채우려고 커지므로,
+  애초에 fixed를 걸고 싶은 이미지는 화면 전체 크기 (1920*1080)
+  구해놓는 것이 좋다. */
+}
+/* #content4 h3{
+  font-size: rem;
+  font-style: normal;
+  letter-spacing: 12px;
+} */
+#content4 p{
+  font-size: 1.4rem;
+  color: black;
+  margin: 2rem 0 3rem ;
+}
+#content4 a{
+  display: inline-block;
+  border: 1px solid;
+  font-size: 1.3rem;
+  padding: 0.5rem 1.5rem;
+  letter-spacing: 2px;
+}
+#content4 a:hover{
+  color:#3e1c0c;
+  background: #fff;
+}
+footer{
+  background: #000;
+  color: #fff;
+  padding: 4rem 0;
+}
+footer .align{
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+footer .footerLogo{
+  flex-grow:1;
+}
+footer .footerLogo h2{}
+footer .footerLogo h2 a{}
+footer .footerLogo h2 a img{}
+
+footer .footerInfo .info1{
+  /* flex-grow:1; */
+}
+footer .footerInfo .info2{
+  /* flex-grow:1; */
+}
+.topbtn{
+  position: fixed;
+  /* 화면크기 변경이나 스크롤 위치에 상관없이 
+  내가 지정한 위치에 그대로 고정시키기 위해서!
+  만약 화면에서 보이지 않다면 위치값부터 주면 좋음 */
+  right: 2rem;
+  bottom: 2rem;
+  color: #fff;
+  background: #000000b3;
+  font-size: 2rem;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  display: none;
+}
+/* 태블릿용 화면 미디어 쿼리 */
+@media screen and (max-width:768px){
+  header .search, header nav{
+    display: none;
+  }
+  header .logo{
+    text-align: center;
+    width: 100%;
+    padding: 0 0 5px 0;
+  }
+  .headerTabletMenu {
+    display: block;
+  }
+  .headerTabletMenu .tmclick{
+    display: block;
+  }
+  #content1{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    padding: 0 10px;    
+  }
+  #content1 .cont1text{
+    margin-bottom: 3rem;
+    width: 70%;
+  } 
+  #content1 .cont1img{
+    width: 100%;
+    margin-left: 0;    
+  }
+  #content2 ul{
+    flex-wrap: wrap;
+    justify-content: center;    
+  }
+  #content2 ul li{
+    width: 45%;
+    padding: 10px;
+  }
+  #content3{
+    padding:6rem 3rem;
+  }
+  footer .align{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
